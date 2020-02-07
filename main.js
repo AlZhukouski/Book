@@ -1,4 +1,4 @@
-let position;
+let position=localStorage.getItem('position');
 if (position!=undefined){
 
     window.scrollBy({
