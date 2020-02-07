@@ -8,6 +8,8 @@ if (position!=undefined){
 }
 
 window.addEventListener('scroll', function() {
+    console.log(window.pageYOffset)
     position=window.pageYOffset;
     localStorage.setItem('position', position);
+    console.log(localStorage.getItem('position'))
 });
