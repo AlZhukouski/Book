@@ -1,3 +1,29 @@
+body::-webkit-scrollbar {
+   width: 1em;
+ }
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #407696;
+  outline: 1px solid slategrey;
+}
+
+.menu::-webkit-scrollbar {
+  width: 5px;
+}
+
+.menu::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
+}
+
+.menu::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
 body {
   max-width: 1000px;
   margin: 0 auto;
@@ -7,6 +33,7 @@ body {
   color: #c5c8c6;
   background: #1d1f21;
 }
+
 a {
   color: #ff9f00;
   text-align: right;
@@ -29,6 +56,7 @@ blockquote {
   position: relative;
   margin-top: 20px;
   margin-bottom: 35px;
+
   div:before {
     content: '';
     display: block;
@@ -45,15 +73,18 @@ ul.menu {
     list-style: none;
     margin-bottom: 15px;
   }
+
   a {
     text-decoration: none;
   }
+
   .menu__btn {
     display: inline-block;
+    display: none;
     width: 35px;
     height: 35px;
     border: 1px solid #ff9f00;
-   border-radius: 50%;
+    border-radius: 50%;
     margin: 5px;
 
     a {
@@ -65,4 +96,98 @@ ul.menu {
       justify-content: center;
     }
   }
+}
+
+.menu-trigger {
+  position: relative;
+  margin: unset;
+  position: fixed;
+  display: block;
+  width: 35px;
+  height: 35px;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.32);
+  background: #000;
+  top: 15px;
+  left: 0;
+  z-index: 3;
+  transition: 0.05s;
+  &.close-btn {
+    background: rgb(0, 0, 0);
+    width: 100%;
+    max-width: 465px;
+    transition: 0.15s;
+  }
+  &:before {
+    content: "";
+    display: block;
+    width: 21px;
+    height: 3px;
+    border-bottom: 3px solid #c5c8c6;
+    border-top: 3px solid #c5c8c6;
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.menu {
+  margin: 0;
+  position: fixed;
+  top: 52px;
+  left: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  transition: 0.05s;
+  transform: translateX(-100%);
+  background: #303133;
+  overflow: hidden;
+  z-index: 2;
+  padding-left: 0;
+
+  &>li>a {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #ff9f00;
+    text-align: left;
+    padding-left: 10px;
+    line-height: 2;
+    margin: 15px 0 25px;
+    text-transform: capitalize;
+    box-sizing: border-box;
+  }
+}
+
+.is-active {
+  width: 100%;
+  max-width: 463px;
+  height: calc(100vh - 60px);
+  overflow-y: scroll;
+  opacity: 1;
+  transition: 0.1s;
+  transform: translateX(0%);
+}
+
+@media (min-width: 1000px) {
+  .menu-trigger, .menu {
+    left: calc((100vw - 1017px) / 2);
+  }
+}
+
+.bookmark{
+position: absolute;
+  right: 17px;
+  top: 60px;
+  width: 30px;
+  height: 60px;
+  box-sizing: border-box;
+}
+
+.bookmark-hide{
+  width: 0;
+  height: 0;
+  opacity: 0;
+  transition: 0.3s;
 }
